@@ -2,9 +2,16 @@
 import { FormEvent, useRef } from "react";
 import { toast } from "react-hot-toast";
 
-export default function CommentForm({ postId }: { postId: number }) {
+export default function CommentForm({
+  postId,
+  parentId,
+  onClose,
+}: {
+  postId: number;
+  parentId?: String;
+  onClose?: (value: boolean) => void;
+}) {
   const formRef = useRef<HTMLFormElement>(null);
-
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -17,6 +24,7 @@ export default function CommentForm({ postId }: { postId: number }) {
       authorEmail: formData.get("authorEmail"),
       content: formData.get("content")?.toString().replace(/\n/g, "\\n"),
       postId: formData.get("postId"),
+      parentId: parentId ? parentId : "",
     };
 
     const jsonData = JSON.stringify(data);
@@ -28,12 +36,11 @@ export default function CommentForm({ postId }: { postId: number }) {
 
     const result = await response?.json();
 
-    console.log(result);
-
     if (response.ok) {
       toast.dismiss(loading);
       toast.success(result.message);
       formRef.current?.reset(); // Reset the form
+      onClose && onClose(false);
     } else {
       toast.dismiss(loading);
       toast.error(result.message);
@@ -41,10 +48,10 @@ export default function CommentForm({ postId }: { postId: number }) {
   };
 
   return (
-    <>
-      <h3 className="text-2xl pb-4 mb-4 border-b">Add your Thoughts:</h3>
+    <section className="container mx-auto  max-w-[600px]">
+      <h3 className="text-xl xs:text-2xl pb-2 border-b border-b-slate-300 dark:border-b-gray-600  ">Add your Thoughts:</h3>
       <form
-        className="flex flex-col gap-4 justify-center "
+        className="  flex flex-col gap-4 justify-center pt-2  "
         onSubmit={handleSubmit}
         ref={formRef}>
         <div className="flex flex-col gap-4 sm:flex-row">
@@ -72,18 +79,18 @@ export default function CommentForm({ postId }: { postId: number }) {
           <textarea
             name="content"
             id="content"
-            className="h-32 rounded-md text-black bg-gray-200 dark:bg-white"></textarea>
+            className=" h-20 sm:h-32 rounded-md text-black bg-gray-200 dark:bg-white"></textarea>
         </div>
 
         <input type="hidden" name="postId" id="postId" value={postId} />
-        <div className="flex justify-center items-center mb-10">
+        <div className="flex justify-center items-center ">
           <button
             type="submit"
-            className=" text-white  dark:text-black bg-black dark:bg-white border-0 py-2 px-8 focus:outline-none rounded text-lg font-semibold">
+            className="  bg-black text-white dark:text-black dark:bg-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 dark:hover:bg-gray-200 dark:focus:ring-white py-2 px-8 rounded text-lg font-semibold">
             Submit
           </button>
         </div>
       </form>
-    </>
+    </section>
   );
 }

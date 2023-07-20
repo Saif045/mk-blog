@@ -1,38 +1,41 @@
 import { CommentNode } from "@/lib/comments";
 import React from "react";
+import CommentForm from "./CommentForm";
 import Date from "./Date";
+import CommentModal from "./Modals/CommentModal";
 
-type Props = { comments: CommentNode[] };
+type Props = {
+  comments: CommentNode[];
+  postId: number;
+};
 
-const Comments = ({ comments }: Props) => {
+const Comments = ({ comments, postId }: Props) => {
+
   return (
     <div className="container mx-auto lg:max-w-4xl mb-10">
       <section>
         <ul>
           {comments?.map((comment) => (
-            <li key={comment.id} className="pb-4 border-b  border-b-slate-300 dark:border-b-gray-600 ">
-              <div className=" flex justify-start items-center">
-                <div className="py-4">
-                  <img
-                    src={comment?.author?.node?.avatar?.url}
-                    width={comment?.author?.node?.avatar?.width}
-                    height={comment?.author?.node?.avatar?.height}
-                    className="rounded-full max-w-[50px] mr-4"
-                  />
-                </div>
-                <div>
-                  <div className="font-bold">{comment?.author?.node?.name}</div>
-                  <div className="text-sm">
-                    <Date dateString={comment.date} />
-                  </div>
-                </div>
+            <li
+              key={comment.id}
+              className="py-6 border-b border-b-slate-300 dark:border-b-gray-600 ">
+              <div className="  w-full ">
+                <Comment comment={comment} />
+                {/* on click open form modal to collect comment and add to it a parent id of current comment id as props  */}
+                <CommentModal>
+                  <CommentForm postId={postId} parentId={comment.id}/>
+                </CommentModal>
               </div>
-              <div className=" pl-[66px]">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: comment.content,
-                  }}></div>
-              </div>
+
+              {comment.replies && comment.replies?.nodes.length > 0 && (
+                <ul className="pl-[26px]  xs:pl-[40px] sm:pl-[66px]">
+                  {comment.replies.nodes.map((reply) => (
+                    <li key={reply.id} className="">
+                      <Comment comment={reply} />
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>
@@ -42,3 +45,35 @@ const Comments = ({ comments }: Props) => {
 };
 
 export default Comments;
+
+type CommentProps = {
+  comment: CommentNode;
+};
+
+const Comment = ({ comment }: CommentProps) => {
+  return (
+    <div>
+      <div className="flex justify-start items-center">
+        <div className="py-4">
+          <img
+            src={comment?.author?.node?.avatar?.url}
+            width={comment?.author?.node?.avatar?.width}
+            height={comment?.author?.node?.avatar?.height}
+            className="rounded-full max-w-[50px] mr-4"
+          />
+        </div>
+        <div>
+          <div className="font-bold">{comment?.author?.node?.name}</div>
+          <div className="text-sm">
+            <Date dateString={comment.date} />
+          </div>
+        </div>
+      </div>
+      <div className="pl-[66px]">
+        <div
+          className="w-full overflow-hidden"
+          dangerouslySetInnerHTML={{ __html: comment.content }}></div>
+      </div>
+    </div>
+  );
+};

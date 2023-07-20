@@ -1,27 +1,25 @@
 import graphqlRequest from "./graphqlRequest";
 
-interface commentBody {
+interface CommentBody {
   author: string;
   authorEmail: string;
   content: string;
   postId: string;
+  parentId?: string; // Added parentId field for replies
 }
-export async function createComment(body: commentBody) {
+export async function createComment(body: CommentBody) {
+  const parentValue = body.parentId ? `"${body.parentId}"` : null;
+
   const mutation = {
-    query: `mutation createComment(
-      $author: String = "${body.author}", 
-      $authorEmail: String = "${body.authorEmail}", 
-      $clientMutationId: String = "uniqueId", 
-      $commentOn: Int = ${parseInt(body.postId)}, 
-      $content: String = "${body.content}") {
+    query: `mutation {
       createComment(
         input: {
-          author: $author, 
-          authorEmail: 
-          $authorEmail, 
-          clientMutationId: $clientMutationId, 
-          content: $content, 
-          commentOn: $commentOn
+          author: "${body.author}",
+          authorEmail: "${body.authorEmail}",
+          clientMutationId: "uniqueId",
+          content: "${body.content}",
+          commentOn: ${parseInt(body.postId)},
+          parent: ${parentValue}
         }
       ) {
         success
@@ -53,12 +51,16 @@ export interface CommentNode {
   date: string;
   parentId: string;
   id: string;
+  replies?: {
+    nodes: CommentNode[];
+  };
 }
+
 export async function getComments(slug: string) {
   const query = {
     query: `query getComments {
         post(id: "${slug}", idType: SLUG) {
-          comments(where: {parentIn: "null"}) {
+          comments(where: { parentIn: "null" }) {
             nodes {
               content
               author {
@@ -73,7 +75,26 @@ export async function getComments(slug: string) {
               }
               date
               parentId
+              
               id
+              replies {
+                nodes {
+                  content
+                  author {
+                    node {
+                      name
+                      avatar {
+                        url
+                        height
+                        width
+                      }
+                    }
+                  }
+                  date
+                  parentId
+                  id
+                }
+              }
             }
           }
           commentCount

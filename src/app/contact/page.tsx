@@ -106,7 +106,7 @@ const Contact = () => {
                 </div>
               </div>
               <div className="p-2 w-full mb-10">
-                <button className="flex mx-auto text-white  dark:text-black bg-black dark:bg-white border-0 py-2 px-8 focus:outline-none rounded text-lg font-semibold">
+                <button className="flex mx-auto  bg-black text-white dark:text-black dark:bg-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 dark:hover:bg-gray-200 dark:focus:ring-white py-2 px-8 rounded text-lg font-semibold">
                   Submit
                 </button>
               </div>
