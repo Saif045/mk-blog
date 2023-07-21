@@ -20,6 +20,10 @@ interface CategoryNode {
   slug: string;
 }
 
+export interface PostsWpageInfo {
+  nodes: Post[];
+  pageInfo: pageInfo;
+}
 export interface Post {
   date: string;
   slug: string;
@@ -39,11 +43,18 @@ export interface PostWithContent extends Post {
   databaseId: number;
 }
 
-export async function getPostList(value?: string) {
-  let condition = ` first: 5, where: {orderby: {field: DATE, order: DESC}}`;
+export interface pageInfo {
+  endCursor?: string;
+  hasNextPage?: boolean;
+  hasPreviousPage?: boolean;
+  startCursor?: string;
+}
+
+export async function getPostList(value?: string, endCursor?: string) {
+  let condition = `after: "${endCursor}", first: 5, where: {orderby: {field: DATE, order: DESC}}`;
 
   if (value) {
-    condition = ` first: 5, where: {orderby: {field: DATE, order: DESC}, categoryName: "${value}"}`;
+    condition = `after: "${endCursor}", first: 5, where: {orderby: {field: DATE, order: DESC}, categoryName: "${value}"}`;
   }
 
   const query = {
@@ -84,9 +95,9 @@ export async function getPostList(value?: string) {
   };
 
   const resJson = await graphqlRequest(query);
-  const allPosts = resJson.data.posts.nodes;
+  const allPosts: PostsWpageInfo = resJson.data.posts;
 
-  return allPosts as Post[];
+  return allPosts;
 }
 
 export async function getSinglePost(slug: string) {

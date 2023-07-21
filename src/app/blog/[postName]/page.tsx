@@ -39,7 +39,9 @@ export default async function page({
           </h3>
           <CommentForm postId={postData?.databaseId} />
         </div>
-        {comments && <Comments comments={comments} postId={postData?.databaseId}/>}
+        {comments && (
+          <Comments comments={comments} postId={postData?.databaseId} />
+        )}
       </div>
     </>
   );

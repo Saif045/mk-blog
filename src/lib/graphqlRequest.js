@@ -12,7 +12,7 @@ export default async function graphqlRequest(query) {
     headers,
     method: "POST",
     body: JSON.stringify(query),
-    next: { revalidate: 60 }
+    next: { revalidate: 10 }
   });
 
   const resJson = await res.json();

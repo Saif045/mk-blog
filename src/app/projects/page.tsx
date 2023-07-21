@@ -15,7 +15,7 @@ export default async function page() {
           name={categoryDetails?.name}
         />
       )}
-      <MiniPost posts={categoryPosts} CategoryName={"projects"} />
+      <MiniPost postss={categoryPosts} CategoryName={"projects"} />
     </>
   );
 }

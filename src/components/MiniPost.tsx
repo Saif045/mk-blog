@@ -1,22 +1,26 @@
-import { Post } from "@/lib/posts";
+"use client";
+import { PostsWpageInfo } from "@/lib/posts";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Date from "./Date";
 import FeaturedImage from "./FeaturedImage";
 import TruncatedExcerptPreview from "./TruncatedExcerptPreview";
+import LoadMore from "./LoadMore";
 
 type Props = {
-  posts: Post[];
+  postss: PostsWpageInfo;
   CategoryName: string;
 };
 
-const MiniPost = ({ posts, CategoryName }: Props) => {
+const MiniPost = ({ postss, CategoryName }: Props) => {
+  const [posts, setPosts] = useState<PostsWpageInfo>(postss);
+
   return (
     <main>
       <section className="post-list mt-4">
         <div className="container mx-auto lg:max-w-5xl">
           <ul>
-            {posts?.map((post) => (
+            {posts?.nodes?.map((post) => (
               <li
                 key={post.slug}
                 className="flex flex-col sm:flex-row justify-center items-center mb-8 p-4 gap-4 sm:h-[200px]">
@@ -44,6 +48,13 @@ const MiniPost = ({ posts, CategoryName }: Props) => {
           </ul>
         </div>
       </section>
+      <div className="py-4 text-center">
+        <LoadMore
+          posts={posts}
+          setPosts={setPosts}
+          CategoryName={CategoryName}
+        />
+      </div>
     </main>
   );
 };
