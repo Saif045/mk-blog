@@ -1,6 +1,7 @@
 "use client";
-import { FormEvent, useRef } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export default function CommentForm({
   postId,
@@ -8,12 +9,17 @@ export default function CommentForm({
   onClose,
 }: {
   postId: number;
-  parentId?: String;
+  parentId?: string;
   onClose?: (value: boolean) => void;
 }) {
+  const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false); // Added disabled state
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    // Disable the submit button while the form is being submitted
+    setIsSubmitting(true);
 
     const loading = toast.loading("Your comment is being submitted...");
 
@@ -41,17 +47,23 @@ export default function CommentForm({
       toast.success(result.message);
       formRef.current?.reset(); // Reset the form
       onClose && onClose(false);
+      router.refresh();
     } else {
       toast.dismiss(loading);
       toast.error(result.message);
     }
+
+    // Enable the submit button after form submission is complete
+    setIsSubmitting(false);
   };
 
   return (
     <section className="container mx-auto  max-w-[600px]">
-      <h3 className="text-xl xs:text-2xl pb-2 border-b border-b-slate-300 dark:border-b-gray-600  ">Add your Thoughts:</h3>
+      <h3 className="text-xl xs:text-2xl pb-2 border-b border-b-slate-300 dark:border-b-gray-600  ">
+        Add your Thoughts:
+      </h3>
       <form
-        className="  flex flex-col gap-4 justify-center pt-2  "
+        className="flex flex-col gap-4 justify-center pt-2"
         onSubmit={handleSubmit}
         ref={formRef}>
         <div className="flex flex-col gap-4 sm:flex-row">
@@ -86,7 +98,8 @@ export default function CommentForm({
         <div className="flex justify-center items-center ">
           <button
             type="submit"
-            className="  bg-black text-white dark:text-black dark:bg-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 dark:hover:bg-gray-200 dark:focus:ring-white py-2 px-8 rounded text-lg font-semibold">
+            disabled={isSubmitting} // Add disabled state based on isSubmitting value
+            className="bg-black text-white dark:text-black dark:bg-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 dark:hover:bg-gray-200 dark:focus:ring-white py-2 px-8 rounded text-lg font-semibold">
             Submit
           </button>
         </div>

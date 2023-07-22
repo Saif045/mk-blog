@@ -9,6 +9,7 @@ import { useWindowSize } from "usehooks-ts";
 import Link from "next/link";
 import Switcher from "@/utils/Switcher";
 import ClientOnly from "@/utils/ClientOnly";
+import SearchPopup from "../SearchPopup";
 
 export const MobileHeader = () => {
   const [open, cycleOpen] = useCycle(false, true);
@@ -110,9 +111,19 @@ export const MobileHeader = () => {
                       <Link href={element.to}>{element.name}</Link>
                     </motion.div>
                   ))}
-                  <div className="flex flex-row justify-center gap-1">
+                  <motion.div
+                    variants={itemVariants}
+                    className="flex flex-row justify-center gap-1 my-2">
                     <Switcher />
-                  </div>
+                  </motion.div>
+
+                  <motion.div
+                    variants={itemVariants}
+                    className="my-2"
+                    >
+                    <SearchPopup label="Search" />
+                  </motion.div>
+
                   <div className="flex items-center justify-center">
                     {navsocials.map((element, i) => (
                       <motion.div

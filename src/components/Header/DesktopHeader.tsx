@@ -2,6 +2,7 @@ import { navData } from "../../assets/data";
 import Link from "next/link";
 import Switcher from "@/utils/Switcher";
 import ClientOnly from "@/utils/ClientOnly";
+import SearchPopup from "../SearchPopup";
 
 export const DesktopHeader = () => {
   return (
@@ -19,6 +20,9 @@ export const DesktopHeader = () => {
         <ClientOnly>
           <div>
             <Switcher hideText />
+          </div>
+          <div>
+            <SearchPopup />
           </div>
         </ClientOnly>
       </div>

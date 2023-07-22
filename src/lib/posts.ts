@@ -50,6 +50,18 @@ export interface pageInfo {
   startCursor?: string;
 }
 
+export interface SearchResult {
+  id: string;
+  title: string;
+  slug: string;
+  featuredImage: {
+    node: FeaturedImageNode | null;
+  };
+  categories: {
+    nodes: CategoryNode[];
+  };
+}
+
 export async function getPostList(value?: string, endCursor?: string) {
   let condition = `after: "${endCursor}", first: 5, where: {orderby: {field: DATE, order: DESC}}`;
 
@@ -179,4 +191,40 @@ export async function getCategoryDetails(categoryName: string) {
   const categoryDetails = resJson.data.category;
 
   return categoryDetails as CategoryDetails;
+}
+
+export async function searchPosts(searchQuery: string) {
+  const query = {
+    query: `query SearchPosts {
+      posts(where: { search: "${searchQuery}" }) {
+        nodes {
+          id
+          title(format: RENDERED)
+          slug
+          featuredImage {
+            node {
+              mediaDetails {
+                sizes {
+                  sourceUrl
+                  width
+                  height
+                }
+              }
+            }
+          }
+          categories {
+            nodes {
+              name
+              slug
+            }
+          }
+          
+        }
+      }
+    }`,
+  };
+
+  const resJson = await graphqlRequest(query);
+  const search = resJson.data.posts.nodes;
+  return search as SearchResult[];
 }

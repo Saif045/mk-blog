@@ -7,9 +7,15 @@ interface ModalProps {
   isOpen: boolean;
   onClose: (value: boolean) => void;
   children: React.ReactNode;
+  topLeft: boolean;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+const Modal: React.FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  children,
+  topLeft,
+}) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -42,17 +48,19 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     <>
       <AnimatePresence>
         {isOpen && (
-          <div className=" z-50 fixed top-0 flex items-center justify-center p4 sm:p-10  left-0 right-0 bottom-0 bg-opacity-25 bg-black ">
+          <div
+            className={` z-[1111] fixed inset-0 flex overflow-y-auto  ${
+              topLeft
+                ? " mt-4 sm:mt-10 items-center justify-center sm:items-start sm:justify-end bg-opacity-5"
+                : "items-center justify-center bg-opacity-25"
+            }  p4 sm:p-10    bg-black `}>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.7 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="
-              fixed 
-              inset-0 
-              bg-black
-            "
+              className={`fixed bg-black  inset-0
+                `}
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
