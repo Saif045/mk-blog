@@ -7,7 +7,7 @@ interface ModalProps {
   isOpen: boolean;
   onClose: (value: boolean) => void;
   children: React.ReactNode;
-  topLeft: boolean;
+  topLeft?: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({
