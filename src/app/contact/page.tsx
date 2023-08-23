@@ -3,7 +3,16 @@ import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { Metadata } from "next";
 
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Contact",
+    alternates: {
+      canonical: `/contact`,
+    },
+  };
+}
 export default function Page() {
   const form = useRef<HTMLFormElement | null>(null);
   const router = useRouter();
