@@ -11,6 +11,6 @@ export default function useDarkSide() {
     const root = window.document.documentElement;
     root.classList.remove(colorTheme);
     root.classList.add(otherTheme);
-  }, [isDarkMode, colorTheme]);
+  }, [isDarkMode, colorTheme, otherTheme]);
   return [isDarkMode, toggle];
 }

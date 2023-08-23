@@ -3,6 +3,13 @@ import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "Contact",
+  },
+};
 
 const Contact = () => {
   const form = useRef<HTMLFormElement | null>(null);

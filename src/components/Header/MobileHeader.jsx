@@ -60,9 +60,9 @@ export const MobileHeader = () => {
   }, [open, cycleOpen]);
 
   return (
-    <div className=" absolute h-20 z-[80] sm:hidden w-full flex justify-between items-center  ">
+    <div className=" absolute h-14 z-[80] sm:hidden w-full flex justify-between items-center  ">
       <Link href="/">
-        <div className="  text-4xl ml-4  logo  ">MK LOGO</div>
+        <div className="  text-3xl ml-4  logo  ">Home</div>
       </Link>
 
       <ClientOnly>
@@ -70,7 +70,7 @@ export const MobileHeader = () => {
           <AnimatePresence>
             {open && (
               <motion.aside
-                className="z-[100] h-screen  rounded-l-[200px] fixed flex flex-col justify-center items-center right-0 top-0   text-white  dark:text-black bg-black dark:bg-white "
+                className="z-[100] h-full min-h-screen  rounded-l-3xl fixed flex flex-col justify-center items-center right-0 top-0   text-white  dark:text-black bg-black dark:bg-white "
                 ref={menuRef}
                 initial={{ width: 0 }}
                 animate={{
@@ -85,7 +85,8 @@ export const MobileHeader = () => {
                   width: 0,
                   transition: { delay: 0.3, duration: 0.5 },
                 }}>
-                <button
+                <motion.button
+                  variants={itemVariants}
                   className="z-[100] absolute  right-0 top-0"
                   onClick={cycleOpen}>
                   <FontAwesomeIcon
@@ -93,7 +94,7 @@ export const MobileHeader = () => {
                     className="mr-3 mt-5  "
                     size="2x"
                   />
-                </button>
+                </motion.button>
 
                 <motion.div
                   className="flex flex-col text-center justify-between font-bold text-xl w-full "
@@ -117,10 +118,7 @@ export const MobileHeader = () => {
                     <Switcher />
                   </motion.div>
 
-                  <motion.div
-                    variants={itemVariants}
-                    className="my-2"
-                    >
+                  <motion.div variants={itemVariants} className="my-2">
                     <SearchPopup label="Search" />
                   </motion.div>
 
@@ -148,23 +146,9 @@ export const MobileHeader = () => {
         </main>
       </ClientOnly>
 
-      <AnimatePresence>
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 1,
-          }}
-          exit={{
-            width: 0,
-            transition: { delay: 0.3, duration: 0.5 },
-          }}
-          className="z-[90] sm:hidden self-start "
-          onClick={cycleOpen}>
-          {!open && (
-            <FontAwesomeIcon icon={faBars} className="mr-5 mt-6 " size="2x" />
-          )}
-        </motion.button>
-      </AnimatePresence>
+      <button className="z-[90] sm:hidden mr-4 " onClick={cycleOpen}>
+        <FontAwesomeIcon icon={faBars} size="2x" />
+      </button>
     </div>
   );
 };

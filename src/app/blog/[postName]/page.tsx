@@ -3,9 +3,34 @@ import Comments from "@/components/Comments";
 import Post from "@/components/Post";
 import { getComments } from "@/lib/comments";
 import { getPostSlugs, getSinglePost } from "@/lib/posts";
+import { getSeo } from "@/lib/seo";
+import { Metadata } from "next";
 import React from "react";
 
 export const dynamicParams = false;
+
+export async function generateMetadata({
+  params: { postName },
+}: {
+  params: {
+    postName: string;
+  };
+}): Promise<Metadata> {
+  const post = await getSeo(postName);
+  if (!post)
+    return {
+      title: "Not Found",
+      description: "The page is not found",
+    };
+
+  return {
+    title: post.title,
+    description: post.metaDesc,
+    alternates: {
+      canonical: `/blog/${postName}`,
+    },
+  };
+}
 
 export async function generateStaticParams() {
   const postSlugs = await getPostSlugs("posts");

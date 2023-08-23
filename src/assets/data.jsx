@@ -10,6 +10,7 @@ export const navsocials = [
 ];
 
 export const navData = [
+  { to: "/", name: "Home" },
   {
     to: "/projects",
     name: "Projects",

@@ -1,4 +1,5 @@
 import { CommentNode } from "@/lib/comments";
+import Image from "next/image";
 import React from "react";
 import CommentForm from "./CommentForm";
 import Date from "./Date";
@@ -10,7 +11,6 @@ type Props = {
 };
 
 const Comments = ({ comments, postId }: Props) => {
-
   return (
     <div className="container mx-auto lg:max-w-4xl mb-10">
       <section>
@@ -23,7 +23,7 @@ const Comments = ({ comments, postId }: Props) => {
                 <Comment comment={comment} />
                 {/* on click open form modal to collect comment and add to it a parent id of current comment id as props  */}
                 <CommentModal>
-                  <CommentForm postId={postId} parentId={comment.id}/>
+                  <CommentForm postId={postId} parentId={comment.id} />
                 </CommentModal>
               </div>
 
@@ -55,11 +55,12 @@ const Comment = ({ comment }: CommentProps) => {
     <div>
       <div className="flex justify-start items-center">
         <div className="py-4">
-          <img
-            src={comment?.author?.node?.avatar?.url}
+          <Image
+            src={comment?.author?.node?.avatar?.url as string}
             width={comment?.author?.node?.avatar?.width}
             height={comment?.author?.node?.avatar?.height}
             className="rounded-full max-w-[50px] mr-4"
+            alt={comment?.author?.node?.name as string}
           />
         </div>
         <div>

@@ -6,6 +6,7 @@ import Date from "./Date";
 import FeaturedImage from "./FeaturedImage";
 import TruncatedExcerptPreview from "./TruncatedExcerptPreview";
 import LoadMore from "./LoadMore";
+import { motion } from "framer-motion";
 
 type Props = {
   postss: PostsWpageInfo;
@@ -21,7 +22,10 @@ const MiniPost = ({ postss, CategoryName }: Props) => {
         <div className="container mx-auto lg:max-w-5xl">
           <ul>
             {posts?.nodes?.map((post) => (
-              <li
+              <motion.li
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, type: "easeInOut" }}
                 key={post.slug}
                 className="flex flex-col sm:flex-row justify-center items-center mb-8 p-4 gap-4 sm:h-[200px]">
                 <div className="  sm:w-1/3">
@@ -43,7 +47,7 @@ const MiniPost = ({ postss, CategoryName }: Props) => {
                     <TruncatedExcerptPreview excerpt={post.excerpt} />
                   </Link>
                 </div>
-              </li>
+              </motion.li>
             ))}
           </ul>
         </div>

@@ -5,8 +5,7 @@ import { DesktopHeader } from "./DesktopHeader";
 const Header = () => {
   return (
     <div className="">
-        <MobileHeader />
-
+      <MobileHeader />
       <DesktopHeader />
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 import { getMorePosts } from "@/app/_actions";
 import { PostsWpageInfo } from "@/lib/posts";
+import { motion } from "framer-motion";
 import { useTransition } from "react";
 
 export default function LoadMore({
@@ -41,7 +42,11 @@ export default function LoadMore({
     }
   }
   return (
-    <form action={() => startTransition(() => getMore())}>
+    <motion.form
+      action={() => startTransition(() => getMore())}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, type: "easeInOut" }}>
       <button
         className="inline-flex space-x-2 items-center justify-center bg-black text-white dark:text-black dark:bg-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 dark:hover:bg-gray-200 dark:focus:ring-white py-2 px-8 rounded text-lg font-semibold"
         type="submit"
@@ -55,6 +60,6 @@ export default function LoadMore({
           <span>{bT}</span>
         )}
       </button>
-    </form>
+    </motion.form>
   );
 }

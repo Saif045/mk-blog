@@ -13,7 +13,13 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "mk-blog-45.000webhostapp.com",
+        hostname: "mohamed-khaled-45.000webhostapp.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "secure.gravatar.com",
         port: "",
         pathname: "/**",
       },
