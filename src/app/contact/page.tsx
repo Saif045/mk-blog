@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function page() {
+export default function Page() {
   const form = useRef<HTMLFormElement | null>(null);
   const router = useRouter();
   const sendEmail = (e: React.FormEvent) => {
