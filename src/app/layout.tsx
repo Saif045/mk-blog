@@ -17,24 +17,23 @@ const inter = Cabin({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mk-blog-45.vercel.app"),
+  applicationName: "Mohamed Khaled",
+  publisher: "Mohamed Khaled",
+  creator: "Mohamed Khaled",
+  authors: [{ name: "Mohamed Khaled", url: "https://mk-blog-45.vercel.app" }],
   title: {
     default: "Mohamed Khaled",
     template: `%s | Mohamed Khaled`,
   },
+  keywords: [],
   description:
     "Computer engineering student who is interested in both hardware and software development. Fond of whatever related to the industry of Embedded Systems and electronic design. Interested in Electronics, Software developing and Embedded systems.",
   // verification: {
   //  google: "google-site-verification=878787878",
   //},
-  creator: "Mohamed Khaled",
-  publisher: "Mohamed Khaled",
-  authors: [{ name: "Mohamed Khaled", url: "https://mk-blog-45.vercel.app" }],
   openGraph: {
     type: "website",
     url: "https://mk-blog-45.vercel.app",
-    title: "My Website",
-    description: "My Website Description",
-    siteName: "My Website",
     images: [
       {
         url: "https://mk-blog-45.vercel.app/api/og?title=Generate Dynamic Open Graph and Twitter Images in Next.js",
@@ -43,9 +42,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Generate Dynamic Open Graph and Twitter Images in Next.js",
+    title: "Mohamed Khaled",
     description:
-      "A guide on how to optimize SEO with static and dynamic metatags using Next.js 13's new Metadata API.",
+      "Computer engineering student who is interested in both hardware and software development. Fond of whatever related to the industry of Embedded Systems and electronic design. Interested in Electronics, Software developing and Embedded systems.",
     images: [
       "https://mk-blog-45.vercel.app/api/og?title=Generate Dynamic Open Graph and Twitter Images in Next.js",
     ],
