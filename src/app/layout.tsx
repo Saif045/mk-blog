@@ -16,7 +16,7 @@ import ToasterProvider from "@/utils/ToasterProvider";
 const inter = Cabin({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.mk-blog-45.vercel.app"),
+  metadataBase: new URL("https://mk-blog-45.vercel.app"),
   title: {
     default: "Mohamed Khaled",
     template: `%s | Mohamed Khaled`,
