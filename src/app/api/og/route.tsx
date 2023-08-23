@@ -3,9 +3,7 @@ import { ImageResponse } from "next/server";
 export const runtime = "edge";
 
 export async function GET(request: Request) {
-  const interExtrabold = fetch(
-    new URL("../../../public/Inter-ExtraBold.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
+  
   try {
     const { searchParams } = new URL(request.url);
 
