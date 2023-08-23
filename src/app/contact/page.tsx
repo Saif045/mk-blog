@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
 };
 
-const Contact = () => {
+export default function page() {
   const form = useRef<HTMLFormElement | null>(null);
   const router = useRouter();
   const sendEmail = (e: React.FormEvent) => {
@@ -123,6 +123,4 @@ const Contact = () => {
       </form>
     </motion.section>
   );
-};
-
-export default Contact;
+}
