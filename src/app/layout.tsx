@@ -26,6 +26,20 @@ export const metadata: Metadata = {
   // verification: {
   //  google: "google-site-verification=878787878",
   //},
+  creator: "Mohamed Khaled",
+  publisher: "Mohamed Khaled",
+  openGraph: {
+    type: "website",
+    url: "https://mk-blog-45.vercel.app",
+    title: "My Website",
+    description: "My Website Description",
+    siteName: "My Website",
+    images: [
+      {
+        url: "https://mk-blog-45.vercel.app/api/og?title=",
+      },
+    ],
+  },
   twitter: {
     card: "summary_large_image",
     title: "Generate Dynamic Open Graph and Twitter Images in Next.js",
