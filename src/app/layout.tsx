@@ -28,6 +28,7 @@ export const metadata: Metadata = {
   //},
   creator: "Mohamed Khaled",
   publisher: "Mohamed Khaled",
+  authors: [{ name: "Mohamed Khaled", url: "https://mk-blog-45.vercel.app" }],
   openGraph: {
     type: "website",
     url: "https://mk-blog-45.vercel.app",
