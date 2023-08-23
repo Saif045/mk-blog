@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: "My Website",
     images: [
       {
-        url: "https://mk-blog-45.vercel.app/api/og?title=",
+        url: "https://mk-blog-45.vercel.app/api/og?title=Generate Dynamic Open Graph and Twitter Images in Next.js",
       },
     ],
   },
