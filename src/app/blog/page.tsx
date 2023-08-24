@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   },
   description:
     "Engaging and informative blog posts covering a range of topics. Gain insights, learn, and stay updated with thought-provoking content.",
+  openGraph: {
+    images: [
+      {
+        url: "https://mk-blog-45.vercel.app/api/og?title=Blog Posts",
+      },
+    ],
+  },
 };
 export default async function page() {
   const CategoryName = "posts";

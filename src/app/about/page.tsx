@@ -5,6 +5,13 @@ export const metadata: Metadata = {
   title: {
     absolute: "About ",
   },
+  openGraph: {
+    images: [
+      {
+        url: "https://mk-blog-45.vercel.app/api/og?title=About Page",
+      },
+    ],
+  },
 };
 
 export default function About() {

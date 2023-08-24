@@ -29,6 +29,13 @@ export async function generateMetadata({
     alternates: {
       canonical: `/blog/${postName}`,
     },
+    openGraph: {
+      images: [
+        {
+          url: `https://mk-blog-45.vercel.app/api/og?title=About Page&img=${post?.opengraphImage.mediaItemUrl}`,
+        },
+      ],
+    },
   };
 }
 

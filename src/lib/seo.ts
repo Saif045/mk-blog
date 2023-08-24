@@ -21,6 +21,7 @@ export async function getSeo(slug: string) {
   const getSeo = await graphqlRequest(query);
   const seoData: seo = getSeo.data["post"].seo;
   if (!seoData) return;
+  console.log(seoData?.opengraphImage.mediaItemUrl);
   return seoData;
 }
 

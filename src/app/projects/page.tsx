@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   },
   description:
     "Explore a diverse collection of my projects, exemplifying creativity and expertise across various domains. A testament to innovation and dedication.",
+  openGraph: {
+    images: [
+      {
+        url: "https://mk-blog-45.vercel.app/api/og?title=Projects",
+      },
+    ],
+  },
 };
 export default async function page() {
   const CategoryName = "projects";

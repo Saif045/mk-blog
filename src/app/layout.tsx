@@ -45,6 +45,9 @@ export const metadata: Metadata = {
     title: "Mohamed Khaled",
     description:
       "Computer engineering student who is interested in both hardware and software development. Fond of whatever related to the industry of Embedded Systems and electronic design. Interested in Electronics, Software developing and Embedded systems.",
+    creator: "Mohamed Khaled",
+    creatorId: "@mk45",
+    site: "https://mk-blog-45.vercel.app",
     images: [
       "https://mk-blog-45.vercel.app/api/og?title=Generate Dynamic Open Graph and Twitter Images in Next.js",
     ],

@@ -3,7 +3,6 @@ import { ImageResponse } from "next/server";
 export const runtime = "edge";
 
 export async function GET(request: Request) {
-  
   try {
     const { searchParams } = new URL(request.url);
 
@@ -12,12 +11,18 @@ export async function GET(request: Request) {
       ? searchParams.get("title")?.slice(0, 100)
       : "Default title";
 
+    const hasImg = searchParams.has("img");
+    const img = hasImg;
+
     return new ImageResponse(
       (
         <div
           style={{
-            backgroundImage:
-              "url(https://cruip-tutorials-next.vercel.app/social-card-bg.jpg)",
+            backgroundImage: `url(${
+              img
+                ? img
+                : "https://cruip-tutorials-next.vercel.app/social-card-bg.jpg"
+            } )`,
             backgroundSize: "100% 100%",
             height: "100%",
             width: "100%",
