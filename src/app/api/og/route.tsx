@@ -12,8 +12,7 @@ export async function GET(request: Request) {
       : "Default title";
 
     const hasImg = searchParams.has("img");
-    const img = hasImg;
-
+    const img = hasImg && searchParams.get("img");
     return new ImageResponse(
       (
         <div

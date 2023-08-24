@@ -31,7 +31,6 @@ export async function getSeo(slug: string) {
   };
 
   const response = await graphqlRequest(query);
-  console.log(response)
   const seoData: seo = {
     featuredImage: response?.data?.getSinglePost?.featuredImage,
     opengraphModifiedTime: response?.data?.getSeo?.seo?.opengraphModifiedTime,
@@ -40,7 +39,6 @@ export async function getSeo(slug: string) {
     metaDesc: response?.data?.getSeo?.seo?.metaDesc,
     readingTime: response?.data?.getSeo?.seo?.readingTime,
   };
-  console.log(seoData);
   return seoData;
 }
 
