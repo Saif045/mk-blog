@@ -9,48 +9,6 @@ import React from "react";
 
 export const dynamicParams = false;
 
-export async function generateMetadata({
-  params: { postName },
-}: {
-  params: {
-    postName: string;
-  };
-}): Promise<Metadata> {
-  const post = await getSeo(postName);
-  if (!post)
-    return {
-      title: "Not Found",
-      description: "The page is not found",
-    };
-
-  const featuredImage = post?.featuredImage
-    ? post?.featuredImage?.node?.mediaDetails?.sizes[0]?.sourceUrl
-    : "https://deepbluembedded.com/wp-content/uploads/2021/04/DeepBlue-Website-Hero-Background-e1618552512933.jpg";
-  return {
-    title: post.title,
-    description: post.metaDesc,
-    alternates: {
-      canonical: `/blog/${postName}`,
-    },
-    openGraph: {
-      images: [
-        {
-          url: `https://mk-blog-45.vercel.app/api/og?title=${post.title}&img=${featuredImage}`,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.metaDesc,
-      site: `https://mk-blog-45.vercel.app/blog/${postName}`,
-      images: [
-        `https://mk-blog-45.vercel.app/api/og?title=${post.title}&img=${featuredImage}`,
-      ],
-    },
-  };
-}
-
 export async function generateStaticParams() {
   const postSlugs = await getPostSlugs("posts");
   return postSlugs.map((s) => ({ postName: s.slug }));
@@ -89,4 +47,47 @@ export default async function page({
       </div>
     </>
   );
+}
+
+export async function generateMetadata({
+  params: { postName },
+}: {
+  params: {
+    postName: string;
+  };
+}): Promise<Metadata> {
+  const post = await getSeo(postName);
+  if (!post)
+    return {
+      title: "Not Found",
+      description: "The page is not found",
+    };
+
+  return {
+    title: post.title,
+    description: post.metaDesc,
+    alternates: {
+      canonical: `/blog/${postName}`,
+    },
+    openGraph: {
+      images: [
+        {
+          url: `https://mk-blog-45.vercel.app/api/og?title=${post.title}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.metaDesc,
+      site: `https://mk-blog-45.vercel.app/blog/${postName}`,
+      images: [`https://mk-blog-45.vercel.app/api/og?title=${post.title}`],
+    },
+  };
+}
+
+{
+  /** const featuredImage = post?.featuredImage
+    ? post?.featuredImage?.node?.mediaDetails?.sizes[0]?.sourceUrl
+    : "https://deepbluembedded.com/wp-content/uploads/2021/04/DeepBlue-Website-Hero-Background-e1618552512933.jpg"; */
 }

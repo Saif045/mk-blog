@@ -9,29 +9,6 @@ import React from "react";
 
 export const dynamicParams = false;
 
-export async function generateMetadata({
-  params: { postName },
-}: {
-  params: {
-    postName: string;
-  };
-}): Promise<Metadata> {
-  const post = await getSeo(postName);
-  if (!post)
-    return {
-      title: "Not Found",
-      description: "The page is not found",
-    };
-
-  return {
-    title: post.title,
-    description: post.metaDesc,
-    alternates: {
-      canonical: `/projects/${postName}`,
-    },
-  };
-}
-
 export async function generateStaticParams() {
   const postSlugs = await getPostSlugs("projects");
   return postSlugs.map((s) => ({ postName: s.slug }));
@@ -70,4 +47,42 @@ export default async function page({
       </>
     </>
   );
+}
+
+
+export async function generateMetadata({
+  params: { postName },
+}: {
+  params: {
+    postName: string;
+  };
+}): Promise<Metadata> {
+  const post = await getSeo(postName);
+  if (!post)
+    return {
+      title: "Not Found",
+      description: "The page is not found",
+    };
+
+  return {
+    title: post.title,
+    description: post.metaDesc,
+    alternates: {
+      canonical: `/projects/${postName}`,
+    },
+    openGraph: {
+      images: [
+        {
+          url: `https://mk-blog-45.vercel.app/api/og?title=${post.title}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.metaDesc,
+      site: `https://mk-blog-45.vercel.app/projects/${postName}`,
+      images: [`https://mk-blog-45.vercel.app/api/og?title=${post.title}`],
+    },
+  };
 }

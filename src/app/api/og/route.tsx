@@ -11,16 +11,11 @@ export async function GET(request: Request) {
       ? searchParams.get("title")?.slice(0, 100)
       : "Default title";
 
-    const img = searchParams.get("img");
-    const bgImg = img
-      ? img
-      : "https://cruip-tutorials-next.vercel.app/social-card-bg.jpg";
     return new ImageResponse(
       (
         <div
           style={{
-            backgroundImage: `url(${bgImg} )`,
-            backgroundSize: "100% 100%",
+            background: "black",
             height: "100%",
             width: "100%",
             display: "flex",

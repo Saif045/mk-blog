@@ -1,12 +1,12 @@
 export default async function graphqlRequest(query) {
-  const url = "https://mohamed-khaled-45.000webhostapp.com/graphql";
+  const url = "https://mk-45.000webhostapp.com/graphql";
   const headers = { "Content-Type": "application/json" };
 
   const res = await fetch(url, {
     headers,
     method: "POST",
     body: JSON.stringify(query),
-    next: { revalidate: 10 },
+    next: { revalidate: 1000 },
   });
   if (!res) return;
 
