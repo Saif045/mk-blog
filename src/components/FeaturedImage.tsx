@@ -10,7 +10,8 @@ export default function FeaturedImage({
   CategoryName?: string;
 }) {
   let img = {
-    src: "https://wp.abhinavr.com/wp-content/uploads/2022/12/travel_icy-polar_022K.jpg",
+    src: `/hero.webp`,
+
     width: 300,
     height: 200,
   };

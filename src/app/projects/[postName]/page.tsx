@@ -24,16 +24,9 @@ export default async function page({
   const postData = await getSinglePost(postName);
   const { comments, commentCount } = await getComments(postName);
 
-  let featuredImageUrl =
-    "https://wp.abhinavr.com/wp-content/uploads/2022/12/travel_icy-polar_022K.jpg";
-
-  if (postData.featuredImage) {
-    featuredImageUrl = postData?.featuredImage?.node?.mediaDetails.sizes[0]
-      .sourceUrl as string;
-  }
   return (
     <>
-      <Post postData={postData} img={featuredImageUrl} />
+      <Post postData={postData} />
       <>
         <div className="container mx-auto lg:max-w-4xl">
           <h3 className="text-xl py-2 my-4 border-l-4 border-l-lime-300 pl-4">
@@ -48,7 +41,6 @@ export default async function page({
     </>
   );
 }
-
 
 export async function generateMetadata({
   params: { postName },

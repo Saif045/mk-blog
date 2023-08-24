@@ -13,7 +13,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "mohamed-khaled-45.000webhostapp.com",
+        hostname: "mk-45.000webhostapp.com",
         port: "",
         pathname: "/**",
       },

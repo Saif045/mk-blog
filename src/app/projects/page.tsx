@@ -4,9 +4,7 @@ import CategoryDetails from "@/components/CategoryDetails";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: {
-    absolute: "Projects",
-  },
+  title: "Projects",
   description:
     "Explore a diverse collection of my projects, exemplifying creativity and expertise across various domains. A testament to innovation and dedication.",
   openGraph: {

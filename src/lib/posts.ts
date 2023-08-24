@@ -88,7 +88,7 @@ export async function getPostList(value?: string, endCursor?: string) {
                       }
                     }
                   }
-                }
+                } 
                 categories {
                   nodes {
                     name

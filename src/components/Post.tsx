@@ -2,14 +2,14 @@ import { PostWithContent } from "@/lib/posts";
 import React from "react";
 import Date from "./Date";
 
-type Props = { postData: PostWithContent; img: string };
+type Props = { postData: PostWithContent};
 
-const Post = ({ postData, img }: Props) => {
+const Post = ({ postData }: Props) => {
   return (
     <article className={` font-light`}>
       <section
-        className=" h-[16rem] bg-no-repeat bg-cover bg-center relative"
-        style={{ backgroundImage: `url(${img})` }}>
+        className=" h-[16rem] relative"
+        >
         <div className="absolute inset-0  opacity-40"></div>
 
         <div className="container mx-auto h-full flex flex-col justify-center items-center lg:max-w-4xl">
