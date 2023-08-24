@@ -13,16 +13,15 @@ export async function GET(request: Request) {
 
     const hasImg = searchParams.has("img");
     const img = hasImg && searchParams.get("img");
-    console.log(img)
+    console.log(img);
+    const bgImg = img
+      ? img
+      : "https://cruip-tutorials-next.vercel.app/social-card-bg.jpg";
     return new ImageResponse(
       (
         <div
           style={{
-            backgroundImage: `url(${
-              img
-                ? "https://mohamed-khaled-45.000webhostapp.com/wp-content/uploads/2023/07/3793959-248x300.jpg"
-                : "https://cruip-tutorials-next.vercel.app/social-card-bg.jpg"
-            } )`,
+            backgroundImage: `url(${bgImg} )`,
             backgroundSize: "100% 100%",
             height: "100%",
             width: "100%",
