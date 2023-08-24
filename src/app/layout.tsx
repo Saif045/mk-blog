@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   description:
     "Computer engineering student who is interested in both hardware and software development. Fond of whatever related to the industry of Embedded Systems and electronic design. Interested in Electronics, Software developing and Embedded systems.",
   verification: {
-  google: "google-site-verification=AnKIUrVQeMso_NMBhy6o6eIdwZXwU6dcMQAzyWNApJ0",
+  google: "AnKIUrVQeMso_NMBhy6o6eIdwZXwU6dcMQAzyWNApJ0",
   },
   openGraph: {
     type: "website",
