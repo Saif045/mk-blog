@@ -12,9 +12,7 @@ export default async function sitemap() {
       const seo = await getSeo(post.slug);
       return {
         url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: seo.opengraphModifiedTime
-          ? seo.opengraphModifiedTime
-          : seo.opengraphPublishedTime,
+        lastModified: seo.opengraphModifiedTime,
       };
     })
   );
@@ -27,21 +25,17 @@ export default async function sitemap() {
       const seo = await getSeo(post.slug);
       return {
         url: `${baseUrl}/projects/${post.slug}`,
-        lastModified: seo.opengraphModifiedTime
-          ? seo.opengraphModifiedTime
-          : seo.opengraphPublishedTime,
+        lastModified: seo.opengraphModifiedTime,
       };
     })
   );
 
-  return [
-    { url: baseUrl, lastModified: new Date() },
-    { url: `${baseUrl}/about`, lastModified: new Date().toISOString() },
-    { url: `${baseUrl}/blog`, lastModified: new Date().toISOString() },
-    { url: `${baseUrl}/contact`, lastModified: new Date().toISOString() },
-    { url: `${baseUrl}/projects`, lastModified: new Date().toISOString() },
+  const routes = ["", "/about", "/blog", "/contact", "/projects"].map(
+    (route) => ({
+      url: `${baseUrl}${route}`,
+      lastModified: new Date().toISOString(),
+    })
+  );
 
-    ...postUrls,
-    ...projectUrls,
-  ];
+  return [...routes, ...postUrls, ...projectUrls];
 }
