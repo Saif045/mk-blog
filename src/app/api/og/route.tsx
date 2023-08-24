@@ -11,9 +11,7 @@ export async function GET(request: Request) {
       ? searchParams.get("title")?.slice(0, 100)
       : "Default title";
 
-    const hasImg = searchParams.has("img");
-    const img = hasImg && searchParams.get("img");
-    console.log(img);
+    const img = searchParams.get("img");
     const bgImg = img
       ? img
       : "https://cruip-tutorials-next.vercel.app/social-card-bg.jpg";
@@ -40,6 +38,7 @@ export async function GET(request: Request) {
               color: "white",
               marginBottom: 24,
               whiteSpace: "pre-wrap",
+              textAlign: "center",
             }}>
             {title}
           </div>
