@@ -23,6 +23,9 @@ export async function generateMetadata({
       description: "The page is not found",
     };
 
+  const featuredImage = post?.featuredImage
+    ? post?.featuredImage?.node?.mediaDetails?.sizes[0]?.sourceUrl
+    : "https://deepbluembedded.com/wp-content/uploads/2021/04/DeepBlue-Website-Hero-Background-e1618552512933.jpg";
   return {
     title: post.title,
     description: post.metaDesc,
@@ -32,8 +35,17 @@ export async function generateMetadata({
     openGraph: {
       images: [
         {
-          url: `https://mk-blog-45.vercel.app/api/og?title=About Page&img=${post?.opengraphImage.mediaItemUrl}`,
+          url: `https://mk-blog-45.vercel.app/api/og?title=${post.title}&img=${featuredImage}`,
         },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.metaDesc,
+      site: `https://mk-blog-45.vercel.app/blog/${postName}`,
+      images: [
+        `https://mk-blog-45.vercel.app/api/og?title=${post.title}&img=${featuredImage}`,
       ],
     },
   };
