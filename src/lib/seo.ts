@@ -2,22 +2,21 @@ import graphqlRequest from "./graphqlRequest";
 
 export async function getSeo(slug: string) {
   const query = {
-    query: `
-        getSeo: post(id: "${slug}", idType: SLUG) {
-          seo {
-            opengraphModifiedTime
-            opengraphPublishedTime
-            title
-            metaDesc
-            readingTime
-          }
+    query: `query getSeo {
+      post(id: "${slug}", idType: SLUG) {
+           seo {
+             opengraphModifiedTime
+             opengraphPublishedTime
+             title
+             metaDesc
+             readingTime
+           }
          }
-    `,
+       }`,
   };
 
   const response = await graphqlRequest(query);
-  const seoData: seo = response?.data?.getSeo?.seo;
-
+  const seoData: seo = response.data["post"].seo;
   return seoData;
 }
 
