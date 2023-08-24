@@ -13,13 +13,14 @@ export async function GET(request: Request) {
 
     const hasImg = searchParams.has("img");
     const img = hasImg && searchParams.get("img");
+    console.log(img)
     return new ImageResponse(
       (
         <div
           style={{
             backgroundImage: `url(${
               img
-                ? img
+                ? "https://mohamed-khaled-45.000webhostapp.com/wp-content/uploads/2023/07/3793959-248x300.jpg"
                 : "https://cruip-tutorials-next.vercel.app/social-card-bg.jpg"
             } )`,
             backgroundSize: "100% 100%",
