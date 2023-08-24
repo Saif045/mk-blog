@@ -34,7 +34,7 @@ export default function FeaturedImage({
         width={img.width}
         height={img.height}
         alt={post.title}
-        className="h-[200px] w-[300px]  object-cover rounded-xl border border-black dark:border-white"
+        className="h-[200px] w-[300px]  object-cover shadow-lg rounded-xl "
       />
     </Link>
   );
