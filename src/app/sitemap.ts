@@ -6,27 +6,33 @@ export default async function sitemap() {
 
   ///
   const posts = await getPostSlugs("posts");
-  let postModifiedTime: string;
-  for (const post of posts) {
-    const seo = await getSeo(post.slug);
-    postModifiedTime = seo.opengraphModifiedTime;
-  }
-  const postUrls = posts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: postModifiedTime,
-  }));
+
+  const postUrls = await Promise.all(
+    posts.map(async (post) => {
+      const seo = await getSeo(post.slug);
+      return {
+        url: `${baseUrl}/blog/${post.slug}`,
+        lastModified: seo.opengraphModifiedTime
+          ? seo.opengraphModifiedTime
+          : seo.opengraphPublishedTime,
+      };
+    })
+  );
 
   ///
   const projects = await getPostSlugs("projects");
-  let projectModifiedTime: string;
-  for (const project of projects) {
-    const seo = await getSeo(project.slug);
-    projectModifiedTime = seo.opengraphModifiedTime;
-  }
-  const projectUrls = projects.map((project) => ({
-    url: `${baseUrl}/projects/${project.slug}`,
-    lastModified: projectModifiedTime,
-  }));
+
+  const projectUrls = await Promise.all(
+    projects.map(async (post) => {
+      const seo = await getSeo(post.slug);
+      return {
+        url: `${baseUrl}/projects/${post.slug}`,
+        lastModified: seo.opengraphModifiedTime
+          ? seo.opengraphModifiedTime
+          : seo.opengraphPublishedTime,
+      };
+    })
+  );
 
   return [
     { url: baseUrl, lastModified: new Date() },

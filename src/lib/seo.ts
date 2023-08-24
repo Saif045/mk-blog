@@ -17,6 +17,7 @@ export async function getSeo(slug: string) {
 
   const response = await graphqlRequest(query);
   const seoData: seo = response.data["post"].seo;
+
   return seoData;
 }
 
