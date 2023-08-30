@@ -40,7 +40,7 @@ const MiniPost = ({ postss, CategoryName }: Props) => {
                 <div className=" max-w-[300px] sm:max-w-5xl xs:w-2/3 ">
                   <h2>
                     <Link
-                      aria-label={`link to ` + post.title + "post"}
+                      aria-label={`link to ` + post.title + " post"}
                       href={`/${CategoryName}/${post.slug}`}
                       className=" text-2xl  font-semibold">
                       {post.title}
@@ -50,7 +50,7 @@ const MiniPost = ({ postss, CategoryName }: Props) => {
                     Published on <Date dateString={post.date} />
                   </div>
                   <Link
-                    aria-label={`link to ` + post.title + "post"}
+                    aria-label={`link to ` + post.title + " post"}
                     href={`/${CategoryName}/${post.slug}`}>
                     <TruncatedExcerptPreview excerpt={post.excerpt} />
                   </Link>
