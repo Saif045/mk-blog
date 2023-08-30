@@ -11,7 +11,9 @@ export default function Footer() {
   return (
     <>
       <footer id="site-footer">
-        <div className="flex flex-col justify-between items-center container mx-auto  lg:max-w-5xl py-8">
+        <div
+          aria-label="Mohamed Khaled"
+          className="flex flex-col justify-between items-center container mx-auto  lg:max-w-5xl py-8">
           <div className="flex gap-6 mb-1">
             {navsocials.map((element, i) => (
               <div key={i}>
@@ -34,7 +36,7 @@ export default function Footer() {
           <span>
             Developed By{" "}
             <Link
-              aria-label="link to the developer created this website"
+              aria-label="link to the developer created this website Saif Osama"
               href="https://saifosama.co/"
               target="_blank">
               Saif Osama
