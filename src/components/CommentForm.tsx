@@ -59,9 +59,9 @@ export default function CommentForm({
 
   return (
     <section className="container mx-auto  max-w-[600px]">
-      <h3 className="text-xl xs:text-2xl pb-2 border-b border-b-slate-300 dark:border-b-gray-600  ">
+      <h1 className="text-xl xs:text-2xl pb-2 border-b border-b-slate-300 dark:border-b-gray-600  ">
         Add your Thoughts:
-      </h3>
+      </h1>
       <form
         className="flex flex-col gap-4 justify-center pt-2"
         onSubmit={handleSubmit}
