@@ -8,9 +8,11 @@ import {
 import "react-vertical-timeline-component/style.min.css";
 import { experiencesData } from "@/assets/data";
 import useDarkSide from "@/utils/useDarkSide";
+import { useWindowSize } from "usehooks-ts";
 
 export default function Experience() {
   const [isDarkMode] = useDarkSide();
+  const { height, width } = useWindowSize();
 
   return (
     <section className="scroll-mt-28 mb-8 sm:mb-12 overflow-x-hidden">
@@ -24,11 +26,7 @@ export default function Experience() {
                 boxShadow: "none",
                 border: "1px solid rgba(0, 0, 0, 0.05)",
                 textAlign: "left",
-                padding: `1.3rem  ${
-                  window?.innerWidth && window?.innerWidth < 500
-                    ? "0.4rem"
-                    : "2rem"
-                } `,
+                padding: `1.3rem  ${width < 500 ? "0.4rem" : "2rem"} `,
               }}
               contentArrowStyle={{
                 borderRight: isDarkMode

@@ -8,7 +8,7 @@ export default async function graphqlRequest(query) {
     headers,
     method: "POST",
     body: JSON.stringify(query),
-    next: { revalidate: 10 },
+    next: { revalidate: 1000 },
   });
   if (!res) return;
 

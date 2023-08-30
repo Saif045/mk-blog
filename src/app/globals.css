@@ -38,8 +38,10 @@ html.dark {
   --line-color: rgba(255, 255, 255, 0.2);
 }
 
-
 .slide-in {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
