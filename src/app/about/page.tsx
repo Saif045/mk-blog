@@ -10,7 +10,7 @@ export default function About() {
       <section className=" min-h-screen h-full w-full flex flex-col justify-center items-center">
         <div className="w-full  h-full  flex flex-wrap  gap-4 xl:gap-10 justify-center items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0.7, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -30 }}
             transition={{
@@ -29,7 +29,7 @@ export default function About() {
           </motion.div>
 
           <motion.img
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0.7, scale: 0.9 }}
             animate={{ opacity: 1, scale: [1.1, 1] }}
             exit={{ opacity: 0, scale: 1 }}
             transition={{
@@ -41,10 +41,10 @@ export default function About() {
             width={200}
             height={200}
             alt="Mohamed Khaled"
-            className="rounded-lg w-[190px] xl:w-[260px] h-[190px] xl:h-[260px] justify-self-center"
+            className=" order-first md:order-none  rounded-lg w-[190px] xl:w-[260px] h-[190px] xl:h-[260px] justify-self-center"
           />
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0.7, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 30 }}
             transition={{
@@ -63,7 +63,7 @@ export default function About() {
           </motion.div>
         </div>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0.7, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 30 }}
           transition={{ ease: [0.68, -0.6, 0.32, 1.6], duration: 1, delay: 1 }}

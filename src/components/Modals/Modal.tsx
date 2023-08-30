@@ -88,11 +88,11 @@ export default Modal;
 const Close = ({ onClose }: { onClose: (value: boolean) => void }) => {
   return (
     <button
+      aria-label="modal close button"
       type="button"
       className="
-     absolute top-1 right-1
+      absolute top-1 right-1
        rounded-md 
-      
        focus:outline-none 
        focus:ring-2 
        focus:ring-indigo-500 
@@ -100,7 +100,11 @@ const Close = ({ onClose }: { onClose: (value: boolean) => void }) => {
      "
       onClick={() => onClose(false)}>
       <span className="sr-only">Close</span>
-      <IoClose className="h-10 w-10" aria-hidden="true" />
+      <IoClose
+        className="h-10 w-10"
+        aria-hidden="true"
+        aria-label="modal close icon"
+      />
     </button>
   );
 };

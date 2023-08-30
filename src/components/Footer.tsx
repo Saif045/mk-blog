@@ -12,15 +12,18 @@ export default function Footer() {
     <>
       <footer id="site-footer">
         <div className="flex flex-col justify-between items-center container mx-auto  lg:max-w-5xl py-8">
-          <div className="flex gap-2 mb-1">
+          <div className="flex gap-6 mb-1">
             {navsocials.map((element, i) => (
               <div key={i}>
-                <Link href={element.to} target="_blank">
+                <Link
+                  href={element.to}
+                  target="_blank"
+                  aria-label={element.name + `social icon link`}>
                   <ClientOnly>
                     <FontAwesomeIcon
                       icon={element.icon}
                       color={isDarkMode ? "#fff" : "#000"}
-                      size="xl"
+                      size="2x"
                     />
                   </ClientOnly>
                 </Link>
@@ -30,7 +33,10 @@ export default function Footer() {
           Mohamed Khaled • © 2023
           <span>
             Developed By{" "}
-            <Link href="https://saifosama.co/" target="_blank">
+            <Link
+              aria-label="link to the developer created this website"
+              href="https://saifosama.co/"
+              target="_blank">
               Saif Osama
             </Link>
           </span>

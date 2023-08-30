@@ -50,7 +50,7 @@ const HomeHero = () => {
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ ease: "easeIn", duration: 0.2, delay: 1.6 }}
           className="w-[140px] h-full bg-black text-white border border-white  px-4 py-2 transition duration-300 hover:bg-neutral-800 hover:text-white">
-          <Link href="/contact">Let&apos;s Connect</Link>
+          <Link  href="/contact">Let&apos;s Connect</Link>
         </motion.button>
       </div>
     </div>

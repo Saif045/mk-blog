@@ -61,7 +61,7 @@ export const MobileHeader = () => {
 
   return (
     <div className=" absolute h-14 z-[80] sm:hidden w-full flex justify-between items-center  ">
-      <Link href="/">
+      <Link aria-label="link to home page" href="/">
         <div className="  text-3xl ml-4  logo  ">Home</div>
       </Link>
 
@@ -90,6 +90,7 @@ export const MobileHeader = () => {
                   className="z-[100] absolute  right-0 top-0"
                   onClick={cycleOpen}>
                   <FontAwesomeIcon
+                    aria-label="menu close"
                     icon={faClose}
                     className="mr-3 mt-5  "
                     size="2x"
@@ -109,7 +110,11 @@ export const MobileHeader = () => {
                       variants={itemVariants}
                       onClick={cycleOpen}
                       key={i}>
-                      <Link href={element.to}>{element.name}</Link>
+                      <Link
+                        aria-label={`link to ` + element.name}
+                        href={element.to}>
+                        {element.name}
+                      </Link>
                     </motion.div>
                   ))}
                   <motion.div
@@ -130,7 +135,10 @@ export const MobileHeader = () => {
                         variants={itemVariants}
                         onClick={cycleOpen}
                         key={i}>
-                        <a href={element.to} target="_blank">
+                        <a
+                          aria-label={element.name + `social icon link`}
+                          href={element.to}
+                          target="_blank">
                           <FontAwesomeIcon
                             icon={element.icon}
                             className="mr-3"
@@ -146,7 +154,10 @@ export const MobileHeader = () => {
         </main>
       </ClientOnly>
 
-      <button className="z-[90] sm:hidden mr-4 " onClick={cycleOpen}>
+      <button
+        aria-label="menu open"
+        className="z-[90] sm:hidden mr-4 "
+        onClick={cycleOpen}>
         <FontAwesomeIcon icon={faBars} size="2x" />
       </button>
     </div>

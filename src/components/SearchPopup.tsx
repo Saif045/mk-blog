@@ -73,9 +73,13 @@ const SearchPopup = ({ label }: { label?: string }) => {
   return (
     <div className="flex  justify-center ">
       <button
+        aria-label="open search pop up "
         onClick={handleSearchButtonClick}
         className="flex justify-center gap-2 items-center ">
-        <ImSearch className="h-[25px] w-[25px]  " />
+        <ImSearch
+          className="h-[25px] w-[25px]  "
+          aria-label="open search icon"
+        />
         {label && <span> {label}</span>}
       </button>
 
@@ -85,6 +89,7 @@ const SearchPopup = ({ label }: { label?: string }) => {
         topLeft>
         <div className="min-h-[200px]">
           <input
+            aria-label="input to collect search query"
             type="text"
             value={searchQuery}
             onChange={(e) => {
@@ -103,6 +108,7 @@ const SearchPopup = ({ label }: { label?: string }) => {
                   className="border-b border-gray-200 py-2 "
                   onClick={() => setIsSearchOpen(false)}>
                   <Link
+                    aria-label={`Link to ` + result.title}
                     className="flex items-center gap-2"
                     href={`/${
                       result.categories.nodes[0].slug == "posts"
