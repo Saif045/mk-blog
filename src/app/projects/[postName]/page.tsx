@@ -29,9 +29,9 @@ export default async function page({
       <Post postData={postData} />
       <>
         <div className="container mx-auto lg:max-w-4xl">
-          <h3 className="text-xl py-2 my-4 border-l-4 border-l-lime-300 pl-4">
+          <h1 className="text-xl py-2 my-4 border-l-4 border-l-lime-300 pl-4">
             {commentCount ? commentCount : "No"} comments on this post so far:
-          </h3>
+          </h1>
           <CommentForm postId={postData?.databaseId} />
         </div>
         {comments && (
