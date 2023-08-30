@@ -16,7 +16,7 @@ export default async function Home() {
         </div>
         <ul className="w-full flex flex-row flex-wrap  justify-center items-center sm:items-start  container mx-auto max-w-5xl">
           {posts?.nodes?.map((post, index) => (
-            <HeroPosts post={post} key={index} />
+            <HeroPosts post={post} key={index} index={index} />
           ))}
         </ul>
       </div>

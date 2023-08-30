@@ -5,9 +5,11 @@ import { Post } from "@/lib/posts";
 export default function FeaturedImage({
   post,
   CategoryName,
+  index,
 }: {
   post: Post;
   CategoryName?: string;
+  index: Number;
 }) {
   let img = {
     src: `/hero.webp`,
@@ -34,6 +36,7 @@ export default function FeaturedImage({
         width={img.width}
         height={img.height}
         alt={post.title}
+        priority={index === 0 ? true : false}
         className="h-[200px] w-[300px]  object-cover shadow-lg rounded-xl "
       />
     </Link>

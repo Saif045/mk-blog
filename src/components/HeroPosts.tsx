@@ -9,9 +9,10 @@ import { Post } from "@/lib/posts";
 
 type Props = {
   post: Post;
+  index: Number;
 };
 
-const HeroPosts = ({ post }: Props) => {
+const HeroPosts = ({ post, index }: Props) => {
   let CategoryName =
     post.categories.nodes[0].slug == "projects" ? "projects" : "blog";
 
@@ -23,7 +24,7 @@ const HeroPosts = ({ post }: Props) => {
       transition={{ duration: 0.7, ease: "easeInOut" }}
       key={post.slug}
       className="flex flex-col  justify-center  mb-2 p-4 gap-4 w-full h-full max-w-[300px]">
-      <FeaturedImage post={post} CategoryName={CategoryName} />
+      <FeaturedImage post={post} CategoryName={CategoryName} index={index} />
 
       <div className=" w-[94%] ">
         <h2>
