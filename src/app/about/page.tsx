@@ -21,7 +21,7 @@ export default function About() {
             className="max-w-[600px] md:max-w-[400px] p-4  flex flex-col gap-2">
             <h1 className="text-4xl font-semibold">About Me</h1>
             <p className="text-neutral-800 dark:text-neutral-400">
-              Hello! I'm Mohamed Khaled, a computer engineering student deeply
+              Hello! I&aposm Mohamed Khaled, a computer engineering student deeply
               passionate about the crossroads of hardware and software
               development. My heart beats for embedded systems and electronic
               design, where innovation takes center stage.
@@ -73,8 +73,8 @@ export default function About() {
             <p className="text-neutral-800 dark:text-neutral-400">
               As I pursue my computer engineering studies, I find myself drawn
               to the world of Embedded Systems and electronic design. From
-              crafting code to building circuits, I'm in my element when I'm
-              exploring the synergy between hardware and software. I'm driven by
+              crafting code to building circuits, I&aposm in my element when I&aposm
+              exploring the synergy between hardware and software. I&aposm driven by
               a thirst for knowledge and a commitment to pushing boundaries.
             </p>
           </div>
@@ -90,12 +90,12 @@ export default function About() {
           exit={{ opacity: 0 }}
           transition={{ ease: [0.68, -0.6, 0.32, 1.6], duration: 1 }}
           className="w-full max-w-[400px]  p-4  flex flex-col gap-4">
-          <h1 className="text-4xl font-semibold ">Let's Connect</h1>
+          <h1 className="text-4xl font-semibold ">Let&aposs Connect</h1>
           <p className="text-neutral-800 dark:text-neutral-400 ">
-            I'm always excited to connect with fellow enthusiasts, potential
-            collaborators, and industry professionals. Whether it's a discussion
+            I&aposm always excited to connect with fellow enthusiasts, potential
+            collaborators, and industry professionals. Whether it&aposs a discussion
             about cutting-edge tech trends or brainstorming innovative ideas,
-            I'm here to embark on this exciting journey together.{" "}
+            I&aposm here to embark on this exciting journey together.{" "}
             <button className="w-full h-full mt-4 bg-white dark:bg-black text-black dark:text-white border border-black dark:border-white  px-4 py-2 transition duration-300 hover:bg-neutral-200 dark:hover:bg-neutral-800 hover:text-black dark:hover:text-white">
               <Link href={"/contact"}>Contact Me</Link>
             </button>

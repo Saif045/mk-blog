@@ -20,7 +20,7 @@ const HomeHero = () => {
             delay: 1,
           }}
           className="text-4xl md:text-6xl font-bold text-white mb-4 md:mb-8">
-          Hello, I'm Mohamed Khaled
+          Hello, I&aposm Mohamed Khaled
         </motion.h1>
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
@@ -42,7 +42,7 @@ const HomeHero = () => {
             delay: 1.2,
           }}
           className="w-[90%] text-sm text-neutral-400 mb-6 md:mb-8">
-          I'm driven by innovation and the desire to create meaningful
+          I&aposm driven by innovation and the desire to create meaningful
           solutions, I craft solutions that matter.
         </motion.p>
         <motion.button
@@ -50,7 +50,7 @@ const HomeHero = () => {
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ ease: "easeIn", duration: 0.2, delay: 1.6 }}
           className="w-[140px] h-full bg-black text-white border border-white  px-4 py-2 transition duration-300 hover:bg-neutral-800 hover:text-white">
-          <Link href="/contact">Let's Connect</Link>
+          <Link href="/contact">Let&aposs Connect</Link>
         </motion.button>
       </div>
     </div>
