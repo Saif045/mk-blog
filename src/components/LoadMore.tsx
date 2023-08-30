@@ -46,7 +46,8 @@ export default function LoadMore({
       action={() => startTransition(() => getMore())}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, type: "easeInOut" }}>
+      viewport={{ once: true, amount: 0.38 }}
+      transition={{ duration: 0.7, ease: "easeInOut" }}>
       <button
         className="inline-flex space-x-2 items-center justify-center bg-black text-white dark:text-black dark:bg-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 dark:hover:bg-gray-200 dark:focus:ring-white py-2 px-8 rounded text-lg font-semibold"
         type="submit"

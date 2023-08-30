@@ -10,6 +10,7 @@ const SearchPopup = ({ label }: { label?: string }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResult[] | []>([]);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Function to handle search button click
   const handleSearchButtonClick = () => {
@@ -22,6 +23,7 @@ const SearchPopup = ({ label }: { label?: string }) => {
     if (searchQuery.trim().length > 0) {
       // Function to perform the search
       const performSearch = async () => {
+        setIsLoading(true);
         try {
           // Trim the search query to remove leading/trailing spaces
           const trimmedSearchQuery = searchQuery.trim();
@@ -41,13 +43,16 @@ const SearchPopup = ({ label }: { label?: string }) => {
           });
 
           if (response.ok) {
+            setIsLoading(false);
             const data: SearchResult[] = await response.json();
             setSearchResults(data);
           } else {
             // Handle error if needed
+            setIsLoading(false);
             console.error("Failed to fetch search results.");
           }
         } catch (error) {
+          setIsLoading(false);
           // Handle error if needed
           console.error(
             "An error occurred while fetching search results.",
@@ -61,12 +66,12 @@ const SearchPopup = ({ label }: { label?: string }) => {
       }, 600);
     } else {
       setSearchResults([]);
+      setIsLoading(false);
     }
   }, [searchQuery]);
 
   return (
     <div className="flex  justify-center ">
-      {/* Trigger button */}
       <button
         onClick={handleSearchButtonClick}
         className="flex justify-center gap-2 items-center ">
@@ -74,23 +79,22 @@ const SearchPopup = ({ label }: { label?: string }) => {
         {label && <span> {label}</span>}
       </button>
 
-      {/* Modal */}
-
       <Modal
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
         topLeft>
         <div className="min-h-[200px]">
-          {/* Search input */}
           <input
             type="text"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setSearchResults([]);
+            }}
             className="border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-full w-[88%]  text-black bg-gray-100 dark:bg-white"
             placeholder="Enter search keywords..."
           />
 
-          {/* Search results */}
           <div className="mt-2">
             {searchResults.length > 0 ? (
               searchResults?.map((result) => (
@@ -120,6 +124,11 @@ const SearchPopup = ({ label }: { label?: string }) => {
                   </Link>
                 </div>
               ))
+            ) : isLoading ? (
+              <div className="flex gap-3">
+                <div className="w-6 h-6 border-t-4 border-r-4  border-gray-200 dark:border-gray-600  rounded-full animate-spin" />
+                <span>Searching ...</span>
+              </div>
             ) : (
               <p>No search results found.</p>
             )}

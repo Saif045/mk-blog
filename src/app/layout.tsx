@@ -12,6 +12,7 @@ import Header from "@/components/Header/Header";
 import ScrollToTop from "@/utils/ScrollToTop";
 import Footer from "@/components/Footer";
 import ToasterProvider from "@/utils/ToasterProvider";
+import ExitTransition from "@/components/ExitTransition";
 
 const inter = Cabin({ subsets: ["latin"] });
 
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
   description:
     "Computer engineering student who is interested in both hardware and software development. Fond of whatever related to the industry of Embedded Systems and electronic design. Interested in Electronics, Software developing and Embedded systems.",
   verification: {
-  google: "AnKIUrVQeMso_NMBhy6o6eIdwZXwU6dcMQAzyWNApJ0",
+    google: "AnKIUrVQeMso_NMBhy6o6eIdwZXwU6dcMQAzyWNApJ0",
   },
   openGraph: {
     type: "website",
@@ -66,6 +67,7 @@ export default async function RootLayout({
         <ScrollToTop />
         <ToasterProvider />
         <Header />
+        <ExitTransition />
         <div className="pt-14" />
         <main className="min-h-screen">{children}</main>
         <Footer />

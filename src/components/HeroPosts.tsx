@@ -19,7 +19,8 @@ const HeroPosts = ({ post }: Props) => {
     <motion.li
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, type: "easeInOut" }}
+      viewport={{ once: true, amount: 0.38 }}
+      transition={{ duration: 0.7, ease: "easeInOut" }}
       key={post.slug}
       className="flex flex-col  justify-center  mb-2 p-4 gap-4 w-full h-full max-w-[300px]">
       <FeaturedImage post={post} CategoryName={CategoryName} />

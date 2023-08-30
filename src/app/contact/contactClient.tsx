@@ -48,7 +48,7 @@ export default function ContactClient() {
         type: "easeIn",
 
         duration: 0.6,
-        delay: 0.2,
+        delay: 1,
       },
     },
   };
