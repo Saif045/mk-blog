@@ -50,7 +50,6 @@ const MiniPost = ({ postss, CategoryName }: Props) => {
                     Published on <Date dateString={post.date} />
                   </div>
                   <Link
-                    aria-label={`link to ` + post.title + " post"}
                     href={`/${CategoryName}/${post.slug}`}>
                     <TruncatedExcerptPreview excerpt={post.excerpt} />
                   </Link>
