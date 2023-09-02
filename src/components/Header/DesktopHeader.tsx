@@ -30,7 +30,7 @@ export const DesktopHeader = () => {
             {activeTab === element.name && (
               <motion.span
                 layoutId="bubble"
-                className="absolute inset-0 z-10 border-white mix-blend-difference"
+                className="absolute inset-0 z-10  border-b mix-blend-difference"
                 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
               />
             )}
