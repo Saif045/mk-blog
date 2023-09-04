@@ -73,7 +73,7 @@ export default function CommentForm({
               type="text"
               id="author"
               name="author"
-              className="h-10 rounded-md text-black bg-gray-200 dark:bg-white"
+              className=" p-4 h-10 rounded-md text-black bg-gray-200 dark:bg-white"
             />
           </div>
           <div className="flex flex-col w-full gap-2">
@@ -82,7 +82,7 @@ export default function CommentForm({
               type="email"
               id="authorEmail"
               name="authorEmail"
-              className="h-10 rounded-md text-black bg-gray-200 dark:bg-white"
+              className=" p-4 h-10 rounded-md text-black bg-gray-200 dark:bg-white"
             />
           </div>
         </div>
@@ -91,7 +91,7 @@ export default function CommentForm({
           <textarea
             name="content"
             id="content"
-            className=" h-20 sm:h-32 rounded-md text-black bg-gray-200 dark:bg-white"></textarea>
+            className="p-4 h-20 sm:h-32 rounded-md text-black bg-gray-200 dark:bg-white"></textarea>
         </div>
 
         <input type="hidden" name="postId" id="postId" value={postId} />
