@@ -41,10 +41,6 @@ export default async function page({
     publisher: {
       "@type": "Person",
       name: "Mohamed Khaled",
-      logo: {
-        "@type": "ImageObject",
-        url: "/mk-photo.jpg",
-      },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
