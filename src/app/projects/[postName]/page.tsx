@@ -42,6 +42,12 @@ export default async function page({
       "@type": "Person",
       name: "Mohamed Khaled",
     },
+    image: {
+      "@type": "ImageObject",
+      url: "/mk-photo.jpg",
+      width: 300, 
+      height: 300,
+    },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `https://mk-blog-45.vercel.app/projects/${postData.slug}`,

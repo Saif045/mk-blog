@@ -58,6 +58,12 @@ const jsonLd = {
   "@type": "Person",
   name: "Mohamed Khaled",
   url: "https://mk-blog-45.vercel.app",
+  image: {
+    "@type": "ImageObject",
+    url: "/mk-photo.jpg",
+    width: 300,
+    height: 300,
+  },
   sameAs: ["https://www.linkedin.com/in/mkh384/", "https://github.com/MK384"],
 };
 
