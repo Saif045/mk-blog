@@ -39,7 +39,7 @@ export default async function page({
       url: "https://mk-blog-45.vercel.app",
     },
     publisher: {
-      "@type": "Organization",
+      "@type": "Person",
       name: "Mohamed Khaled",
       logo: {
         "@type": "ImageObject",
