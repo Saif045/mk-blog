@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     url: "https://mk-blog-45.vercel.app",
     images: [
       {
-        url: "https://mk-blog-45.vercel.app/api/og?title=Generate Dynamic Open Graph and Twitter Images in Next.js",
+        url: "https://mk-blog-45.vercel.app/api/og?title=Mohamed Khaled",
       },
     ],
   },
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     creatorId: "@mk45",
     site: "https://mk-blog-45.vercel.app",
     images: [
-      "https://mk-blog-45.vercel.app/api/og?title=Generate Dynamic Open Graph and Twitter Images in Next.js",
+      "https://mk-blog-45.vercel.app/api/og?title=Mohamed Khaled",
     ],
   },
 };
