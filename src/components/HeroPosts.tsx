@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import Date from "@/components/Date";
+import Date from "@/utils/Date";
 import FeaturedImage from "@/components/FeaturedImage";
-import TruncatedExcerptPreview from "@/components/TruncatedExcerptPreview";
+import TruncatedExcerptPreview from "@/utils/TruncatedExcerptPreview";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Post } from "@/lib/posts";

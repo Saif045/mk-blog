@@ -1,6 +1,6 @@
 import { PostWithContent } from "@/lib/posts";
 import React from "react";
-import Date from "./Date";
+import Date from "../utils/Date";
 
 type Props = { postData: PostWithContent };
 
@@ -24,7 +24,6 @@ const Post = ({ postData }: Props) => {
             <span
               className="pl-2"
               aria-label={"date where post was last updated "}>
-            
               last updated on <Date dateString={postData.modified} />
             </span>
           </div>

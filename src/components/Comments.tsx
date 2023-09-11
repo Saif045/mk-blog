@@ -2,7 +2,7 @@ import { CommentNode } from "@/lib/comments";
 import Image from "next/image";
 import React from "react";
 import CommentForm from "./CommentForm";
-import Date from "./Date";
+import Date from "../utils/Date";
 import CommentModal from "./Modals/CommentModal";
 
 type Props = {

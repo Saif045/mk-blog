@@ -2,9 +2,9 @@
 import { PostsWpageInfo } from "@/lib/posts";
 import Link from "next/link";
 import React, { useState } from "react";
-import Date from "./Date";
+import Date from "../utils/Date";
 import FeaturedImage from "./FeaturedImage";
-import TruncatedExcerptPreview from "./TruncatedExcerptPreview";
+import TruncatedExcerptPreview from "../utils/TruncatedExcerptPreview";
 import LoadMore from "./LoadMore";
 import { motion } from "framer-motion";
 
@@ -49,8 +49,7 @@ const MiniPost = ({ postss, CategoryName }: Props) => {
                   <div className="py-2 text-sm">
                     Published on <Date dateString={post.date} />
                   </div>
-                  <Link
-                    href={`/${CategoryName}/${post.slug}`}>
+                  <Link href={`/${CategoryName}/${post.slug}`}>
                     <TruncatedExcerptPreview excerpt={post.excerpt} />
                   </Link>
                 </div>

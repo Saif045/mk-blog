@@ -23,9 +23,42 @@ export default async function page({
 }) {
   const postData = await getSinglePost(postName);
   const { comments, commentCount } = await getComments(postName);
+  const post = await getSeo(postName);
+
+  const jsonLd = {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.metaDesc,
+    datePublished: post.opengraphPublishedTime,
+    dateModified: post.opengraphModifiedTime,
+    articleBody: postData.excerpt,
+    author: {
+      "@type": "Person",
+      name: "Mohamed Khaled",
+      url: "https://mk-blog-45.vercel.app",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Mohamed Khaled",
+      logo: {
+        "@type": "ImageObject",
+        url: "/mk-photo.jpg",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://mk-blog-45.vercel.app/projects/${postData.slug}`,
+    },
+  };
 
   return (
     <>
+      {" "}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Post postData={postData} />
       <>
         <div className="container mx-auto lg:max-w-4xl">
